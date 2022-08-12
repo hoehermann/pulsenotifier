@@ -1,0 +1,16 @@
+# Put this file to the systemd user units, e.g. `~/.config/systemd/user/pulsenotifier.service`
+# then run `systemctl --user enable xenyxpower.service`
+
+[Unit]
+Description=OnAir Sign Switch backed by PulseAudio
+After=sound.target
+Requires=pulseaudio.socket
+
+[Service]
+Type=simple
+ExecStart=pulsenotifier alsa_input.whatever.analog-mono-or-similar
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
